@@ -1,0 +1,66 @@
+Name: Roland Zeng
+UCLA ID: 204150508
+
+Collaborators: Got help on exercise 6 in Tuan's office hours
+
+-------------------------------------------------------------------------------
+
+Response to Exercise 1:
+
+The name of the scheduling algorithm is: Round Robin.
+	In schedos-kern.c, inside the schedule function there is a loop that loops through every pid and checks if it is runnable; if so then it runs it. No process is receiving priority; Hence, round robin scheduling.
+
+(Exercise 2 is a coding exercise)
+
+
+Response to Exercise 3:
+
+Average turnaround time for scheduling_algorithm 0: 1278.5ms
+	[take all the processes except for the final 1234]
+	[now consider the final 1234]	
+	Process 1 total time: 319 * 4 + 1 = 1277ms
+	Process 2 total time: 319 * 4 + 2 = 1278ms
+	Process 3 total time: 319 * 4 + 3 = 1279ms
+	Process 4 total time: 319 * 4 + 4 = 320 * 4 = 1280ms
+	Hence, avg turnaround time =  1278.5ms
+
+Average turnaround time for scheduling_algorithm 1: 800ms
+	The first process takes 320ms, the second process has to wait for it, hence
+	second process = 320ms + time of first process = 320ms + 320ms = 640ms
+	Likewise, third process = 320ms + 640ms = 960ms
+	and fourth process = 320ms + 960ms = 1280ms
+	Hence, avg turnaround time = 800ms  
+
+Average wait time for scheduling_algorithm 0: 1.5ms
+	[looking at a single 1234 string]
+	the first process doesn't have to wait at all, the second process waits 1, third 	 waits 1+1, fourth waits 1+1+1
+	Hence, avg wait time = (0ms + 1ms + 2ms + 3ms) / 4 = 1.5ms
+
+Average wait time for scheduling_algorithm 1: 480ms
+	First process: 0 (goes off immediately
+	Second process: waits for first process to finish (320) 
+	Third process: waits for previous two
+	Fourth process: waits for previous three
+	Hence, avg wait time = (0ms + 320ms + 640ms + 960ms) / 4 = 480ms
+
+Exercise 4:
+
+Did you complete Exercise 4A, Exercise 4B, or both for extra credit?
+4A done. Using created variable p_priority, I implemented priority scheduling using pid number as the deciding factor; hence, my output should be the same as the result from exercise 2. 
+4B done. Using created variable p_share, I implemented sharing such that schedos-1 gives a share space of 1, up to shcedos-2 whichi has a spare space of 4. My output becomes:
+122333444.........
+
+
+Exercise 5:
+The first known timer interrupt happens during execution of process 4. Using the pic provided, the output is [groups are separated by a space for visibility] :
+1234 1234 1234 1234 123 123....
+meaning that at 4 there was a skip as the 3 went straight to 1. This points to a timer interrupt.
+
+(Exercise 6 is a coding exercise)
+Originally got less than 320*4 numbers, but got the right amount after implementing INT_SYS_PRINT
+
+Anything else you'd like us to know:
+
+
+
+Extra credit exercises: Did both 4A and 4B
